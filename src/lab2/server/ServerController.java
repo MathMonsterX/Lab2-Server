@@ -10,5 +10,7 @@ package lab2.server;
  * @author Sheyla
  */
 public class ServerController {
-    
+        sendMessage( message )
+1.	for all connections
+1.	write message to out
 }
