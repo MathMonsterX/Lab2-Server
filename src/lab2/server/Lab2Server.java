@@ -5,6 +5,9 @@
  */
 package lab2.server;
 
+import javax.swing.JFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
+
 /**
  *
  * @author Sheyla
@@ -15,7 +18,22 @@ public class Lab2Server {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        JFrame frame = new JFrame("Messaging Server");
+        
+        ServerView view = new ServerView();
+        ServerController controller = new ServerController();
+        ServerModel model = new ServerModel();
+        
+        controller.setView( view );
+        controller.setModel( model );
+        view.setController( controller );
+        model.setController( controller );
+        
+        frame.add( view );
+        frame.setDefaultCloseOperation( EXIT_ON_CLOSE );
+        frame.pack();
+        frame.setVisible( true );
     }
     
 }

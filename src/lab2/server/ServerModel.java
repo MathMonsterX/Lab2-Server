@@ -17,38 +17,8 @@ import java.net.Socket;
  */
 public class ServerModel implements Runnable{
 
-    ServerSocket serverSocket;
     ServerController controller;
     
-    void acceptingConnections(){
-	serverSocket = new ServerSocket();
-	
-        while(true){
-            Socket socket = serverSocket.accept();
-            InputStream in = socket.getInputStream(); 
-            OutputStream Stream out = socket.getOutputStream();
-            controller.addConnection(new Connection( socket, in, out, this ));
-            serverSocket.close();
-        }
-    }
-    
-    
-    Connection( Socket socket, InputStream in, OutputStream out, this ){
-	while(true){
-            byte [] buff = new byte[500] ;
-            in.read(buff) ;
-            
-	this.sendMessage (message )
-        }
-    }
-Thread 2:
-1.	while( true )
-1.	get message from server
-2.	display message to user
-
-    @Override
-    public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void setController( ServerController controller ){ this.controller = controller; }
     
 }

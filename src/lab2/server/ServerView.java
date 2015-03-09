@@ -11,6 +11,8 @@ package lab2.server;
  */
 public class ServerView extends javax.swing.JPanel {
 
+    ServerController controller;
+    
     /**
      * Creates new form ServerView
      */
@@ -18,6 +20,7 @@ public class ServerView extends javax.swing.JPanel {
         initComponents();
     }
 
+    public void setController( ServerController controller ){ this.controller = controller; }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,19 +30,55 @@ public class ServerView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtLog = new javax.swing.JTextArea();
+        txtMessage = new javax.swing.JTextField();
+        btnClear = new javax.swing.JButton();
+
+        txtLog.setColumns(20);
+        txtLog.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtLog.setRows(5);
+        jScrollPane1.setViewportView(txtLog);
+
+        txtMessage.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMessage.setText("Enter message here and press ENTER to send.");
+
+        btnClear.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        btnClear.setText("Clear");
+        btnClear.setName("btnClear"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnClear)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnClear)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClear;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtLog;
+    private javax.swing.JTextField txtMessage;
     // End of variables declaration//GEN-END:variables
 }
