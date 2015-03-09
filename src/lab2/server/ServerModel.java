@@ -10,14 +10,18 @@ import java.io.OutputStream;
 import static java.lang.System.out;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  *
  * @author Sheyla
  */
-public class ServerModel implements Runnable{
+public class ServerModel {
 
     ServerController controller;
+    ArrayList<Connection> connections = new ArrayList();
+    
+    void addConnection( Connection connection ){ connections.add(connection); }
     
     public void setController( ServerController controller ){ this.controller = controller; }
     
