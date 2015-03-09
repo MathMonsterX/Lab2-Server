@@ -5,11 +5,6 @@
  */
 package lab2.server;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import static java.lang.System.out;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.ArrayList;
 
 /**
@@ -22,7 +17,15 @@ public class ServerModel {
     ArrayList<Connection> connections = new ArrayList();
     
     void addConnection( Connection connection ){ connections.add(connection); }
+    void removeConnection( Connection connection ){ connections.remove( connection ); }
+    void setController( ServerController controller ){ this.controller = controller; }
     
-    public void setController( ServerController controller ){ this.controller = controller; }
+    void sendMessageToAll( String message )
+    {
+        for( Connection c:connections )
+        {
+            c.sendMessage( message );
+        }
+    }
     
 }

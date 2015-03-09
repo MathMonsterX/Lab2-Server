@@ -25,13 +25,15 @@ public class ServerController implements Runnable{
     
     ServerSocket serverSocket;
     
-    sendMessage( message )
-	for all connections
-	write message to out
+    
         
         public void setView( ServerView view ){ this.view = view; }
         public void setModel( ServerModel model ){ this.model = model; }
         
+        
+        sendMessage( message )
+            for all connections
+            write message to out
         
         void acceptingConnections(){ 
 	serverSocket = new ServerSocket( 54321, 10, InetAddress.getLocalHost() );
