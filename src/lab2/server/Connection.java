@@ -18,9 +18,9 @@ import java.util.logging.Logger;
  */
 public class Connection implements Runnable {
     private Socket socket;
-    InputStream in;
-    OutputStream out;
-    ServerController controller;
+    private InputStream in;
+    private OutputStream out;
+    private ServerController controller;
     
     public Connection(){}
     

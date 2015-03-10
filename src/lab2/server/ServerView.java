@@ -63,6 +63,11 @@ public class ServerView extends javax.swing.JPanel {
         btnClear.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btnClear.setText("Clear");
         btnClear.setName("btnClear"); // NOI18N
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
         btnStart.setText("Start");
         btnStart.addActionListener(new java.awt.event.ActionListener() {
@@ -103,13 +108,18 @@ public class ServerView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMessageActionPerformed
-        controller.sendMessage( new Date().toString() + ": SERVER: " + txtMessage.getText().trim() );
+        if( !"".equals(txtMessage.getText()) ){ controller.sendMessage( new Date().toString() + ": SERVER: " + txtMessage.getText().trim() ); }
+        txtMessage.setText("");
     }//GEN-LAST:event_txtMessageActionPerformed
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         controller.startServer();
         logMessage("Server Begin. . .");
     }//GEN-LAST:event_btnStartActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        txtLog.setText("");
+    }//GEN-LAST:event_btnClearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
