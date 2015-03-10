@@ -1,7 +1,36 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Name: Sheyla Trudo
+ * Course: CSCE 320
+ * Semester: Spring 2015
+ * Language: Java
+ * IDE: Netbeans 8.0.2
+ * Date: 3/9/2015
+ * 
+ * Sources Consulted:
+ *      Dr. George Hauser
+ * 
+ * Revision History:
+Commits on Mar 9, 2015
+    Final Fixes 
+    The lab for now has been completed. I changed minor items regarding the
+    view. Eventually I would like to handle the error that the Clients get
+    when I close out of the server with the Clients still running.
+
+    Garbage Characters 
+    Removed the unknown array characters from the server messages.
+
+    Editing Controller and Server Start Button 
+    Setting up the Controller and Connection classes and each of their
+    separate functions. Also added a start button to allow the server to
+    begin.
+
+    Connection Class 
+    Setting up the connection class. This class will handle individual
+    connections to the server.
+
+    Server Functions 
+    Attempt to set up server functions in the program.
+ *
  */
 package lab2.server;
 
@@ -22,8 +51,18 @@ public class Connection implements Runnable {
     private OutputStream out;
     private ServerController controller;
     
+    /**
+     * The constructor for the Connection object.
+     */
     public Connection(){}
     
+    /**
+     * The constructor for the Connection object.
+     * @param socket    The socket used for the connection.
+     * @param in        The input stream used for the socket. Receives incoming messages.
+     * @param out       The output stream used for the socket. Used to write outgoing messages.
+     * @param controller    The controller used to send messages to each of the clients.
+     */
     public Connection( Socket socket, InputStream in, OutputStream out, ServerController controller ){
 	this.socket = socket;
         this.in = in;
@@ -34,6 +73,10 @@ public class Connection implements Runnable {
         worker.start() ;  // calls run() in the new Thread
     }
     
+    /**
+     * Used to send messages to an individual connection.
+     * @param message   the message to be sent to the connected client. 
+     */
     void sendMessage( String message )
     {
         try {
@@ -43,6 +86,10 @@ public class Connection implements Runnable {
         }
     }
     
+    /**
+     * Listens for new messages from the client. 
+     * Sends the messages to associated the controller.
+     */
     @Override
     public void run() {
         while(true){
@@ -50,7 +97,6 @@ public class Connection implements Runnable {
             try{
                 int len = in.read(buff);
                 String message = new String( buff, 0, len );
-                message.trim();
                 controller.sendMessage( message );
             }catch( Exception e ){}
         }

@@ -1,7 +1,39 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Name: Sheyla Trudo
+ * Course: CSCE 320
+ * Semester: Spring 2015
+ * Language: Java
+ * IDE: Netbeans 8.0.2
+ * Date: 3/9/2015
+ * 
+ * Sources Consulted:
+ *      Dr. George Hauser
+ *
+ * Revision History:
+Commits on Mar 9, 2015
+    Final Fixes 
+    The lab for now has been completed. I changed minor items regarding the
+    view. Eventually I would like to handle the error that the Clients get
+    when I close out of the server with the Clients still running.
+
+    Begin Testing 
+    So far initial tests have been relatively successful.  The clients are
+    able to connect to the server and send messages to each other. Minor
+    editing within the displayed text. Some errors: A repetitive text is
+    displayed on the client views if the server is closed out of during
+    connection. Also the server still needs to display client messages.
+
+    Editing Controller and Server Start Button 
+    Setting up the Controller and Connection classes and each of their
+    separate functions. Also added a start button to allow the server to
+    begin.
+
+    View Set Up and MVC Set Up 
+    Designed the Server View and set up the connections between the MVC
+    components.
+
+Commits on Mar 7, 2015
+    Initializing Classes Part 2
  */
 package lab2.server;
 
@@ -22,8 +54,16 @@ public class ServerView extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     * Sets the controller for the view. 
+     * @param controller    The controller for the view.
+     */
     public void setController( ServerController controller ){ this.controller = controller; }
     
+    /**
+     * Appends a line of text to the JTextArea, txtLog.
+     * @param message   The line of text to append to txtLog.
+     */
     public void logMessage( String message )
     { 
         if( "".equals(txtLog.getText()) )

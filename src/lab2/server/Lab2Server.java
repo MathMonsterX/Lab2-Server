@@ -1,7 +1,23 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Name: Sheyla Trudo
+ * Course: CSCE 320
+ * Semester: Spring 2015
+ * Language: Java
+ * IDE: Netbeans 8.0.2
+ * Date: 3/9/2015
+ * 
+ * Sources Consulted:
+ *      Dr. George Hauser
+ * 
+ * Revision History:
+Commits on Mar 9, 2015
+    View Set Up and MVC Set Up 
+    Designed the Server View and set up the connections between the MVC
+    components.
+
+Commits on Mar 7, 2015
+    Initializing Classes 
+    Created the necessary classes for the server application.
  */
 package lab2.server;
 
