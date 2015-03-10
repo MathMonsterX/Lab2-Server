@@ -34,6 +34,7 @@ public class ServerView extends javax.swing.JPanel {
         txtLog = new javax.swing.JTextArea();
         txtMessage = new javax.swing.JTextField();
         btnClear = new javax.swing.JButton();
+        btnStart = new javax.swing.JButton();
 
         txtLog.setColumns(20);
         txtLog.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -42,10 +43,22 @@ public class ServerView extends javax.swing.JPanel {
 
         txtMessage.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMessage.setText("Enter message here and press ENTER to send.");
+        txtMessage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMessageActionPerformed(evt);
+            }
+        });
 
         btnClear.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btnClear.setText("Clear");
         btnClear.setName("btnClear"); // NOI18N
+
+        btnStart.setText("Start");
+        btnStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -58,6 +71,8 @@ public class ServerView extends javax.swing.JPanel {
                     .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnStart)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnClear)))
                 .addContainerGap())
         );
@@ -65,18 +80,29 @@ public class ServerView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnClear)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnClear)
+                    .addComponent(btnStart))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMessageActionPerformed
+        controller.sendMessage( txtMessage.getText().trim() );
+    }//GEN-LAST:event_txtMessageActionPerformed
+
+    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+        controller.startServer();
+    }//GEN-LAST:event_btnStartActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnStart;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtLog;
     private javax.swing.JTextField txtMessage;

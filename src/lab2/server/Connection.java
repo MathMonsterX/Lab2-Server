@@ -5,40 +5,56 @@
  */
 package lab2.server;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Sheyla
  */
 public class Connection implements Runnable {
+    private Socket socket;
+    InputStream in;
+    OutputStream out;
+    ServerController controller;
     
-    Connection( Socket socket, InputStream in, OutputStream out, this ){
-	while(true){
-            byte [] buff = new byte[500] ;
-            
-            in.read(buff) ;
-            this.sendMessage( message );
-            
-            Thread worker = new Thread( this ) ;
-            worker.start() ;  // calls run() in the new Thread
-        }
-        }
+    public Connection(){}
     
-
-    void sendMessage(){}
+    public Connection( Socket socket, InputStream in, OutputStream out, ServerController controller ){
+	this.socket = socket;
+        this.in = in;
+        this.out = out;
+        this.controller = controller;
+        
+        Thread worker = new Thread( this ) ;
+        worker.start() ;  // calls run() in the new Thread
+    }
+    
+    void sendMessage( String message )
+    {
+        try {
+            out.write( message.getBytes() );
+        } catch (IOException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     @Override
     public void run() {
-        
-            
-        
+        while(true){
+            byte [] buff = new byte[500] ;
+            try{
+                in.read(buff);
+                String message = new String( buff, 0, 500 );
+                message.trim();
+                controller.sendMessage( message );
+            }catch( Exception e ){}
+        }
     }
 
-    void sendMessage(String message) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }
