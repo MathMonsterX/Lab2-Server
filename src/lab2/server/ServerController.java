@@ -31,11 +31,9 @@ public class ServerController implements Runnable{
     void sendMessage( String message )
     { 
             model.sendMessageToAll(message);
+            view.logMessage(message);
     }
         
-    void acceptingConnections(){ 
-	
-    }
     
     @Override
     public void run() {

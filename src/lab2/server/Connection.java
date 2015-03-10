@@ -48,8 +48,8 @@ public class Connection implements Runnable {
         while(true){
             byte [] buff = new byte[500] ;
             try{
-                in.read(buff);
-                String message = new String( buff, 0, 500 );
+                int len = in.read(buff);
+                String message = new String( buff, 0, len );
                 message.trim();
                 controller.sendMessage( message );
             }catch( Exception e ){}
