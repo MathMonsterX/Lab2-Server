@@ -5,6 +5,8 @@
  */
 package lab2.server;
 
+import java.util.Date;
+
 /**
  *
  * @author Sheyla
@@ -21,6 +23,15 @@ public class ServerView extends javax.swing.JPanel {
     }
 
     public void setController( ServerController controller ){ this.controller = controller; }
+    
+    public void logMessage( String message )
+    { 
+        if( "".equals(txtLog.getText()) )
+        {
+            txtLog.setText( message );
+        }
+        else{ txtLog.setText( txtLog.getText() + "\n" +  message ); }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,11 +103,12 @@ public class ServerView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMessageActionPerformed
-        controller.sendMessage( txtMessage.getText().trim() );
+        controller.sendMessage( new Date().toString() + ": SERVER: " + txtMessage.getText().trim() );
     }//GEN-LAST:event_txtMessageActionPerformed
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         controller.startServer();
+        logMessage("Server Begin. . .");
     }//GEN-LAST:event_btnStartActionPerformed
 
 

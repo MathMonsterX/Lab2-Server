@@ -47,6 +47,7 @@ public class ServerController implements Runnable{
                 InputStream in = socket.getInputStream(); 
                 OutputStream out = socket.getOutputStream();
                 model.addConnection( new Connection( socket, in, out, this ) );
+                view.logMessage(  socket.getInetAddress() + " has established a connection" );
                 serverSocket.close(); 
             }catch (IOException ex) {
                 Logger.getLogger(ServerController.class.getName()).log(Level.SEVERE, null, ex);
