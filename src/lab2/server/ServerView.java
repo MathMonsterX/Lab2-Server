@@ -87,6 +87,9 @@ public class ServerView extends javax.swing.JPanel {
         btnClear = new javax.swing.JButton();
         btnStart = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(0, 204, 204));
+
+        txtLog.setEditable(false);
         txtLog.setColumns(20);
         txtLog.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtLog.setRows(5);

@@ -80,7 +80,7 @@ public class Connection implements Runnable {
      * Used to send messages to an individual connection.
      * @param message   the message to be sent to the connected client. 
      */
-    void sendMessage( String message )
+    public void sendMessage( String message )
     {
         try {
             out.write( message.getBytes() );
