@@ -111,11 +111,19 @@ public class ServerController implements Runnable{
     }
 
     /**
-     *
+     * Starts a new thread to listen for incoming server connections.
      */
     public void startServer() {
         Thread worker = new Thread( this );
         worker.start();
+    }
+
+    /**
+     * The method that tells the model that a connection needs to be removed.
+     * @param c The connection to be removed from the server connection list.
+     */
+    public void dropConnection( Connection c ) {
+        model.removeConnection(c);
     }
     
 }

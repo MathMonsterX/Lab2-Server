@@ -53,7 +53,11 @@ public class ServerModel {
      * Removes a specified connection from the ArrayList that stores each Connection to the server.
      * @param connection    The connection to be removed from the ArrayList.
      */
-    public void removeConnection( Connection connection ){ connections.remove( connection ); }
+    public void removeConnection( Connection connection )
+    { 
+        controller.view.logMessage(  connection.getInetAddress().toString() + " has disconnected." );
+        connections.remove( connection ); 
+    }
 
     /**
      * Sets the Controller for the ServerModel.

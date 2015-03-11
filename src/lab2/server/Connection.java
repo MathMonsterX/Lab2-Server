@@ -37,6 +37,7 @@ package lab2.server;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -50,6 +51,7 @@ public class Connection implements Runnable {
     private InputStream in;
     private OutputStream out;
     private ServerController controller;
+    private boolean connected;
     
     /**
      * The constructor for the Connection object.
@@ -68,6 +70,7 @@ public class Connection implements Runnable {
         this.in = in;
         this.out = out;
         this.controller = controller;
+        connected = true;
         
         Thread worker = new Thread( this ) ;
         worker.start() ;  // calls run() in the new Thread
@@ -89,17 +92,32 @@ public class Connection implements Runnable {
     /**
      * Listens for new messages from the client. 
      * Sends the messages to associated the controller.
+     * When a client disconnects an exception is thrown and the client is 
+     * disconnected from the server.
      */
     @Override
     public void run() {
-        while(true){
+        while(connected){
             byte [] buff = new byte[500] ;
             try{
                 int len = in.read(buff);
                 String message = new String( buff, 0, len );
                 controller.sendMessage( message );
-            }catch( Exception e ){}
+            }catch( Exception e )
+            { 
+                connected = false; controller.dropConnection( this ); 
+            }
         }
+        
+    }
+    
+    /**
+     * Returns the socket's InetAddress.
+     * @return  The InetAddress
+     */
+    public InetAddress getInetAddress()
+    {
+        return socket.getInetAddress();
     }
 
     
